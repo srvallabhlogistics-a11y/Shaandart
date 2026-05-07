@@ -29,17 +29,7 @@
       display:flex;
       justify-content:center;
       align-items:center;
-
-      /* Golden Background */
-
-      background:linear-gradient(
-        135deg,
-        #FFD700,
-        #FFC300,
-        #FFB000,
-        #FFD700
-      );
-
+      background:black;
       z-index:10;
     }
 
@@ -47,6 +37,28 @@
       width:100%;
       height:100%;
       object-fit:cover;
+    }
+
+    /* Flashing Text */
+
+    #flashText{
+      position:absolute;
+      top:20px;
+      width:100%;
+      text-align:center;
+      color:#ffcc00;
+      font-size:22px;
+      font-weight:bold;
+      z-index:30;
+
+      animation:flash 1s infinite;
+      text-shadow:0 0 10px rgba(255,204,0,0.8);
+    }
+
+    @keyframes flash{
+      0%{opacity:1;}
+      50%{opacity:0.2;}
+      100%{opacity:1;}
     }
 
     /* Video Screen */
@@ -77,13 +89,12 @@
       transform:translate(-50%, -50%);
       z-index:20;
 
-      padding:36px 80px;
-
-      font-size:48px;
+      padding:18px 40px;
+      font-size:24px;
       font-weight:bold;
 
       border:none;
-      border-radius:70px;
+      border-radius:50px;
 
       background:#ffcc00;
       color:black;
@@ -92,29 +103,29 @@
 
       display:none;
 
-      box-shadow:0 0 35px rgba(255,204,0,0.9);
+      box-shadow:0 0 25px rgba(255,204,0,0.8);
     }
 
     #playButton:hover{
-      transform:translate(-50%, -50%) scale(1.08);
+      transform:translate(-50%, -50%) scale(1.05);
     }
 
     /* Direct Visit Button */
 
     #skipButton{
       position:fixed;
-      bottom:50px;
+      bottom:40px;
       left:50%;
       transform:translateX(-50%);
       z-index:20;
 
-      padding:28px 60px;
+      padding:14px 28px;
 
-      font-size:32px;
+      font-size:18px;
       font-weight:bold;
 
       border:none;
-      border-radius:60px;
+      border-radius:40px;
 
       background:white;
       color:black;
@@ -123,11 +134,11 @@
 
       display:none;
 
-      box-shadow:0 0 25px rgba(255,255,255,0.7);
+      box-shadow:0 0 15px rgba(255,255,255,0.5);
     }
 
     #skipButton:hover{
-      transform:translateX(-50%) scale(1.08);
+      transform:translateX(-50%) scale(1.05);
     }
 
   </style>
@@ -135,13 +146,23 @@
 
 <body>
 
-  <!-- Welcome Image -->
+  <!-- Welcome Screen -->
 
   <div id="welcomeScreen">
+
+    <!-- Flashing Text -->
+
+    <div id="flashText">
+      One of the Trusted website for Decades with 100% withdrawal processing records
+    </div>
+
+    <!-- Welcome Image -->
+
     <img src="welcome.jpg" alt="Welcome">
+
   </div>
 
-  <!-- Video -->
+  <!-- Video Screen -->
 
   <div id="videoScreen">
 
@@ -151,16 +172,16 @@
 
   </div>
 
-  <!-- Play Video Button -->
+  <!-- Play Button -->
 
   <button id="playButton">
-    ▶ CLICK TO KNOW MORE
+    ▶ Click to Know More
   </button>
 
-  <!-- Skip Video Button -->
+  <!-- Skip Button -->
 
   <button id="skipButton">
-    ➜ CLICK HERE TO VISIT WEBSITE DIRECTLY
+    ➜ Click Here to Visit Website Directly
   </button>
 
   <script>
@@ -173,11 +194,11 @@
 
     setTimeout(() => {
 
-      // Hide welcome image
+      // Hide welcome screen
 
       document.getElementById("welcomeScreen").style.display = "none";
 
-      // Show video screen
+      // Show video section
 
       document.getElementById("videoScreen").style.display = "flex";
 
@@ -199,7 +220,7 @@
 
     });
 
-    // Skip directly to website
+    // Direct website visit
 
     skipButton.addEventListener("click", () => {
 
