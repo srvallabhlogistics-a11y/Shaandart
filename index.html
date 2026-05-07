@@ -58,11 +58,11 @@
       background:black;
     }
 
-    /* Play Button */
+    /* Main Play Button */
 
     #playButton{
       position:fixed;
-      top:50%;
+      top:45%;
       left:50%;
       transform:translate(-50%, -50%);
       z-index:20;
@@ -88,6 +88,37 @@
       transform:translate(-50%, -50%) scale(1.05);
     }
 
+    /* Direct Visit Button */
+
+    #skipButton{
+      position:fixed;
+      bottom:40px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:20;
+
+      padding:14px 28px;
+
+      font-size:18px;
+      font-weight:bold;
+
+      border:none;
+      border-radius:40px;
+
+      background:white;
+      color:black;
+
+      cursor:pointer;
+
+      display:none;
+
+      box-shadow:0 0 15px rgba(255,255,255,0.5);
+    }
+
+    #skipButton:hover{
+      transform:translateX(-50%) scale(1.05);
+    }
+
   </style>
 </head>
 
@@ -109,18 +140,25 @@
 
   </div>
 
-  <!-- Play Button -->
+  <!-- Play Video Button -->
 
   <button id="playButton">
-    ▶ PLAY VIDEO
+    ▶ Click to Know More
+  </button>
+
+  <!-- Skip Video Button -->
+
+  <button id="skipButton">
+    ➜ Click Here to Visit Website Directly
   </button>
 
   <script>
 
     const video = document.getElementById("introVideo");
     const playButton = document.getElementById("playButton");
+    const skipButton = document.getElementById("skipButton");
 
-    // After 3 seconds
+    // After 5 seconds
 
     setTimeout(() => {
 
@@ -132,19 +170,29 @@
 
       document.getElementById("videoScreen").style.display = "flex";
 
-      // Show play button
+      // Show buttons
 
       playButton.style.display = "block";
+      skipButton.style.display = "block";
 
     }, 5000);
 
-    // Play video with sound after button click
+    // Play video
 
     playButton.addEventListener("click", () => {
 
       video.play();
 
       playButton.style.display = "none";
+      skipButton.style.display = "none";
+
+    });
+
+    // Skip directly to website
+
+    skipButton.addEventListener("click", () => {
+
+      window.location.href = "https://playexch9.com";
 
     });
 
