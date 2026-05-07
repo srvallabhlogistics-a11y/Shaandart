@@ -17,19 +17,19 @@
     body{
       background:black;
       overflow:hidden;
-      font-family:Arial, sans-serif;
+      font-family:Arial,sans-serif;
     }
 
-    /* Welcome Screen */
+    /* Welcome Image */
 
     #welcomeScreen{
       position:fixed;
       width:100%;
       height:100vh;
-      background:black;
       display:flex;
       justify-content:center;
       align-items:center;
+      background:black;
       z-index:10;
     }
 
@@ -39,23 +39,41 @@
       object-fit:cover;
     }
 
-    /* Video Screen */
+    /* Video */
 
     #videoScreen{
       position:fixed;
       width:100%;
       height:100vh;
-      background:black;
       display:none;
       justify-content:center;
       align-items:center;
+      background:black;
     }
 
     #introVideo{
       width:100%;
       height:100%;
       object-fit:cover;
-      background:black;
+    }
+
+    /* Tap Screen */
+
+    #tapOverlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100vh;
+      background:rgba(0,0,0,0.2);
+      color:white;
+      display:none;
+      justify-content:center;
+      align-items:center;
+      font-size:30px;
+      font-weight:bold;
+      z-index:20;
+      cursor:pointer;
     }
 
   </style>
@@ -63,53 +81,66 @@
 
 <body>
 
-  <!-- Welcome Image -->
+  <!-- Welcome -->
 
   <div id="welcomeScreen">
-    <img src="welcome.jpg" alt="Welcome">
+    <img src="welcome.jpg">
   </div>
 
-  <!-- Video Screen -->
+  <!-- Video -->
 
   <div id="videoScreen">
 
-    <video id="introVideo" controls playsinline>
+    <video id="introVideo" autoplay playsinline muted>
       <source src="video.mp4" type="video/mp4">
-      Your browser does not support video.
     </video>
 
   </div>
 
+  <!-- Tap Overlay -->
+
+  <div id="tapOverlay">
+    TAP ANYWHERE
+  </div>
+
   <script>
 
-    // Wait 5 seconds
+    const video = document.getElementById("introVideo");
+
+    // After 5 sec
 
     setTimeout(() => {
 
-      // Hide image
-
       document.getElementById("welcomeScreen").style.display = "none";
-
-      // Show video
 
       document.getElementById("videoScreen").style.display = "flex";
 
-      // Play video
-
-      const video = document.getElementById("introVideo");
+      document.getElementById("tapOverlay").style.display = "flex";
 
       video.play();
 
-      // Redirect after video ends
-
-      video.onended = function () {
-
-        window.location.href =
-          "https://playexch9.com/sport/allgame/Games";
-
-      };
-
     }, 5000);
+
+    // User tap enables sound
+
+    document.getElementById("tapOverlay").addEventListener("click", () => {
+
+      video.muted = false;
+
+      video.play();
+
+      document.getElementById("tapOverlay").style.display = "none";
+
+    });
+
+    // Redirect after video ends
+
+    video.onended = () => {
+
+      window.location.href =
+      "https://playexch9.com/sport/allgame/Games";
+
+    };
 
   </script>
 
