@@ -1,59 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SHAANDART</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      background: #000;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
+    body{
+      background:black;
+      overflow:hidden;
     }
 
-    /* Welcome Screen */
-
-    #welcomeScreen {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
+    #welcome{
+      position:fixed;
+      width:100%;
+      height:100vh;
+      background:black;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
-    #welcomeScreen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    #welcome img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
-    /* Video Screen */
-
-    #videoScreen {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: #000;
-      display: none;
-      justify-content: center;
-      align-items: center;
+    #videoPage{
+      display:none;
+      width:100%;
+      height:100vh;
+      background:black;
     }
 
-    #introVideo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    #videoPage video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
   </style>
 </head>
@@ -61,14 +51,12 @@
 <body>
 
   <!-- Welcome Image -->
-
-  <div id="welcomeScreen">
-    <img src="welcome.jpg" alt="SHAANDART">
+  <div id="welcome">
+    <img src="welcome.jpg">
   </div>
 
   <!-- Video -->
-
-  <div id="videoScreen">
+  <div id="videoPage">
     <video id="introVideo" autoplay muted playsinline>
       <source src="video.mp4" type="video/mp4">
     </video>
@@ -76,20 +64,16 @@
 
   <script>
 
-    // Show video after 5 seconds
+    setTimeout(function(){
 
-    setTimeout(() => {
+      document.getElementById("welcome").style.display = "none";
+      document.getElementById("videoPage").style.display = "block";
 
-      document.getElementById("welcomeScreen").style.display = "none";
-      document.getElementById("videoScreen").style.display = "flex";
-
-      const video = document.getElementById("introVideo");
+      let video = document.getElementById("introVideo");
 
       video.play();
 
-      // Redirect after video ends
-
-      video.onended = () => {
+      video.onended = function(){
         window.location.href = "https://playexch9.com/sport/allgame/Games";
       };
 
@@ -98,5 +82,4 @@
   </script>
 
 </body>
-
 </html>
