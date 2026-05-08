@@ -43,7 +43,7 @@
 
     #flashText{
       position:fixed;
-      top:140px;
+      top:120px;
       width:100%;
       text-align:center;
 
@@ -52,7 +52,7 @@
       font-size:22px;
       font-weight:bold;
 
-      z-index:50;
+      z-index:40;
 
       animation:flash 1s infinite;
 
@@ -196,28 +196,28 @@
     const skipButton = document.getElementById("skipButton");
     const flashText = document.getElementById("flashText");
 
-    // After 4 seconds
+    // After 5 seconds
 
     setTimeout(() => {
 
-      // Hide welcome image
+  // Hide welcome image
 
-      document.getElementById("welcomeScreen").style.display = "none";
+  document.getElementById("welcomeScreen").style.display = "none";
 
-      // Move flash text down
+  // Hide flashing text also
 
-      flashText.style.top = "260px";
+  document.getElementById("flashText").style.display = "none";
 
-      // Show video screen
+  // Show video screen
 
-      document.getElementById("videoScreen").style.display = "flex";
+  document.getElementById("videoScreen").style.display = "flex";
 
-      // Show buttons
+  // Show buttons
 
-      playButton.style.display = "block";
-      skipButton.style.display = "block";
+  playButton.style.display = "block";
+  skipButton.style.display = "block";
 
-    }, 5000);
+}, 5000);
 
     // Play video
 
