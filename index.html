@@ -43,20 +43,22 @@
 
     #flashText{
       position:fixed;
-      top:120px;
+      top:140px;
       width:100%;
       text-align:center;
 
       color:#b8860b;
 
-      font-size:28px;
+      font-size:22px;
       font-weight:bold;
 
-      z-index:30;
+      z-index:50;
 
       animation:flash 1s infinite;
 
       text-shadow:0 0 12px rgba(184,134,11,0.9);
+
+      transition:top 0.5s ease;
     }
 
     @keyframes flash{
@@ -75,6 +77,7 @@
       justify-content:center;
       align-items:center;
       background:black;
+      z-index:5;
     }
 
     #introVideo{
@@ -84,14 +87,14 @@
       background:black;
     }
 
-    /* Main Play Button */
+    /* Play Button */
 
     #playButton{
       position:fixed;
       top:60%;
       left:50%;
       transform:translate(-50%, -50%);
-      z-index:20;
+      z-index:60;
 
       padding:18px 40px;
       font-size:24px;
@@ -114,14 +117,14 @@
       transform:translate(-50%, -50%) scale(1.05);
     }
 
-    /* Direct Visit Button */
+    /* Skip Button */
 
     #skipButton{
       position:fixed;
       bottom:40px;
       left:50%;
       transform:translateX(-50%);
-      z-index:20;
+      z-index:60;
 
       padding:14px 28px;
 
@@ -183,7 +186,7 @@
   <!-- Skip Button -->
 
   <button id="skipButton">
-    ➜ skip 
+    ➜ skip
   </button>
 
   <script>
@@ -191,16 +194,21 @@
     const video = document.getElementById("introVideo");
     const playButton = document.getElementById("playButton");
     const skipButton = document.getElementById("skipButton");
+    const flashText = document.getElementById("flashText");
 
-    // After 3 seconds
+    // After 4 seconds
 
     setTimeout(() => {
 
-      // Hide welcome screen
+      // Hide welcome image
 
       document.getElementById("welcomeScreen").style.display = "none";
 
-      // Show video section
+      // Move flash text down
+
+      flashText.style.top = "260px";
+
+      // Show video screen
 
       document.getElementById("videoScreen").style.display = "flex";
 
@@ -215,14 +223,22 @@
 
     playButton.addEventListener("click", () => {
 
-      video.play();
+      // Hide flashing text
+
+      flashText.style.display = "none";
+
+      // Hide buttons
 
       playButton.style.display = "none";
       skipButton.style.display = "none";
 
+      // Play video
+
+      video.play();
+
     });
 
-    // Direct website visit
+    // Skip directly
 
     skipButton.addEventListener("click", () => {
 
